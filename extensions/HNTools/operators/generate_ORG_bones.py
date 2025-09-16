@@ -1,9 +1,27 @@
 import bpy
 
 class GenerateORGBonesOperator(bpy.types.Operator):
+    """
+    角色骨骼与绑定的一般做法为三层骨骼：
+    DEF：直接控制模型的骨骼，存储蒙皮信息，最终导出到游戏引擎中的骨骼，有且只有一个Copy Transform的约束用来与ORG骨骼同步，根骨骼为角色根骨骼；
+    ORG：直接控制DEF骨骼的骨骼，一般数量与位置与DEF骨骼相同，被DEF骨骼的Copy Transform约束引用，使用各种约束主动与MCH骨骼同步或者被MCH骨骼控制，根骨骼为角色根骨骼；
+    MCH：用于生成IK,FK等各种功能的控制骨骼，有自己的父子关系，直接或间接通过约束控制ORG骨骼；
+    除了以上三层骨骼外，还有一层控制器，一般使用简单几何形状或线条制作，直接通过约束控制MCH骨骼，是最终用于制作动画的object。
+
+    此工具用于一键从做好的前缀为DEF_的骨骼生成ORG骨骼，生成的ORG骨骼位置，父子关系与DEF骨骼完全相同，并自动在DEF骨骼上配置好对应的Copy Transform约束。
+    
+    使用方法：
+    1、创建好DEF骨骼并正确命名（骨骼名称前缀为DEF_）;
+    2、在Pose Mode下，选择需要生成ORG骨骼的DEF骨骼；
+    3、在顶部菜单点击：Pose->[HN] Generate ORG Bones；
+    4、在左下角的浮动菜单上填写ORG骨骼的前缀，默认为ORG；
+    5、生成完成。
+    """
+
     bl_idname = 'pose.generate_org_bones'
     bl_label = '[HN] Generate ORG Bones'
     bl_options = {'REGISTER', 'UNDO'}
+    bl_description = "通过前缀为DEF_的骨骼在相同位置生成ORG_骨骼"
 
     org_bone_collection_name: bpy.props.StringProperty(name = "ORG Bone Collection Name", default = "ORG")
 

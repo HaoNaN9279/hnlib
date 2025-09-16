@@ -4,12 +4,30 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 """
 
+"""
+骨骼绑定自定义UI模板代码
+一般情况下包含3个固定的面板：
+Visiable：将控制器和骨骼按照肢体部位和功能分类，面板上的每一个toggle button控制每一类控制器或骨骼的显示
+Tools：提供一些简单工具的面板，目前包括FK与IK的骨骼同步功能
+Properties：参数面板，用于显示一些可动画的参数
+其他面板可按需另行添加
+
+使用流程：
+1、制作好完整的骨骼绑定并正确命名和分组
+2、打开scripting面板，在template中选择Hn_rig_ui
+3、在绑定的Armature Object下创建一个string类型的property，命名为hn_rig_id，并赋予一个有意义的值，脚本将通过此property找到目标Armature
+4、修改代码：
+    修改hn_rig_id的值与property中的值相同
+    按需添加UI和面板
+5、修改完成后，点击勾选Scripting上方的菜单Text->Register，以便下次重启工程文件时自动执行该脚本
+6、保存
+"""
+
 import bpy
 import math
 import json
 from math import pi
 from mathutils import Euler, Matrix, Quaternion, Vector
-
 
 #create a string type custom property called "hn_rig_id" on target armature and match the value.
 hn_rig_id = "knight"
