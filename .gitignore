@@ -1,6 +1,6 @@
 *
-!extensions/
-!extensions/**
+!extensions/HNTools/
+!extensions/HNTools/**
 !scripts/
 !scripts/**
 *.pyc
