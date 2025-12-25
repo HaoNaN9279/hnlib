@@ -1,10 +1,9 @@
 # Blender Addons  
 
 包含一些Blender中用到的自定义扩展功能、启动项工具。  
+[部署方式](https://github.com/HaoNaN9279/hnlib/wiki/%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F)  
 
-### [部署方式](https://github.com/HaoNaN9279/hnlib/wiki/%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F)  
-
-## 
+## 工具
 
 ### [Generate ORG Bones](https://github.com/HaoNaN9279/hnlib/wiki/Generate-ORG-Bones)  
 用于快速从DEF骨骼生成对应ORG骨骼，并配置好命名和约束的工具。
