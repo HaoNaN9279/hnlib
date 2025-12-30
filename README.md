@@ -11,3 +11,7 @@
 ### [BSPSD（未完成）](https://github.com/HaoNaN9279/hnlib/wiki/BSPSD)  
 用于在做好绑定的骨骼模型上生成基于[Pose Space Deformation算法](https://en.wikipedia.org/wiki/Pose_space_deformation)的Driver，使得能够生成基于骨骼移动旋转的自动Shape Key混合效果。  
 （卡在哪儿了？Driver中在Scripted Expression中尝试调用Python脚本中的函数时会卡死。）  
+
+## 模板代码  
+### [hn_rig_ui.py](https://github.com/HaoNaN9279/hnlib/wiki/hn_rig_ui)
+自定义骨骼绑定控制面板，骨骼分组可见性，FK IK吸附。
